@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BOT WHATSAPP FURINA MD</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+margin:0;
+font-family:Inter,sans-serif;
+background:#05070d;
+color:white;
+overflow:hidden;
+}
+
+/* star background */
+
+body::before{
+content:"";
+position:fixed;
+width:200%;
+height:200%;
+background:url("https://www.transparenttextures.com/patterns/stardust.png");
+animation:starsMove 80s linear infinite;
+opacity:.25;
+z-index:-1;
+}
+
+@keyframes starsMove{
+from{transform:translate(0,0)}
+to{transform:translate(-500px,-500px)}
+}
+
+/* intro */
+
+#protocol-screen{
+position:fixed;
+width:100%;
+height:100%;
+display:flex;
+align-items:center;
+justify-content:center;
+background:#05070d;
+z-index:10;
+animation:fadeIn 1s;
+}
+
+.protocol-box{
+background:#111;
+padding:35px;
+border-radius:12px;
+text-align:center;
+max-width:480px;
+box-shadow:0 0 25px rgba(0,255,255,.2);
+animation:zoomIn .8s ease;
+}
+
+.protocol-box h2{
+font-family:Orbitron;
+margin-top:0;
+letter-spacing:2px;
+}
+
+.checkbox{
+width:22px;
+height:22px;
+border:2px solid #00eaff;
+display:inline-flex;
+align-items:center;
+justify-content:center;
+margin-right:8px;
+cursor:pointer;
+}
+
+.checkbox.active{
+background:#00eaff;
+color:black;
+}
+
+button{
+margin-top:20px;
+padding:12px 25px;
+border:none;
+background:#00eaff;
+font-weight:bold;
+cursor:pointer;
+transition:.3s;
+}
+
+button:hover{
+transform:scale(1.05);
+}
+
+/* loader */
+
+#loader{
+position:fixed;
+width:100%;
+height:100%;
+display:none;
+align-items:center;
+justify-content:center;
+flex-direction:column;
+background:#05070d;
+z-index:9;
+}
+
+.logo{
+animation:spin 6s linear infinite;
+}
+
+@keyframes spin{
+from{transform:rotate(0)}
+to{transform:rotate(360deg)}
+}
+
+.loader-text{
+margin-top:20px;
+font-family:Orbitron;
+color:#00eaff;
+letter-spacing:3px;
+animation:pulse 2s infinite;
+}
+
+@keyframes pulse{
+0%{opacity:.4}
+50%{opacity:1}
+100%{opacity:.4}
+}
+
+/* portal */
+
+.wrap{
+display:none;
+padding:25px;
+height:100vh;
+overflow:auto;
+animation:fadeIn 1s;
+}
+
+header{
+text-align:center;
+margin-bottom:30px;
+}
+
+h1{
+font-family:Orbitron;
+letter-spacing:4px;
+}
+
+.clock{
+font-size:30px;
+color:#00eaff;
+margin-top:10px;
+}
+
+/* cards */
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:20px;
+}
+
+.card{
+background:#111;
+padding:20px;
+border-radius:12px;
+cursor:pointer;
+transition:.35s;
+position:relative;
+}
+
+.card:hover{
+transform:translateY(-6px) scale(1.04);
+box-shadow:0 0 20px rgba(0,255,255,.4);
+}
+
+.card h2{
+font-family:Orbitron;
+font-size:17px;
+margin:10px 0;
+}
+
+.card p{
+font-size:13px;
+opacity:.7;
+}
+
+@keyframes fadeIn{
+from{opacity:0}
+to{opacity:1}
+}
+
+@keyframes zoomIn{
+from{transform:scale(.8);opacity:0}
+to{transform:scale(1);opacity:1}
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="protocol-screen">
+
+<div class="protocol-box">
+
+<h2> FURINA MD</h2>
+
+<p> FURINA BOT – WhatsApp Assistant
+
+Deskripsi:
+FURINA BOT adalah asisten digital berbasis WhatsApp yang dirancang untuk memberikan kemudahan, kecepatan, dan efisiensi dalam berbagai kebutuhan pengguna. Dengan sistem yang responsif dan fitur yang terus berkembang, FURINA BOT hadir sebagai solusi praktis untuk aktivitas harian, baik hiburan maupun utilitas.
+
+Bot ini mengutamakan kenyamanan pengguna dengan tampilan interaksi yang sederhana namun tetap elegan, serta performa yang stabil dan cepat dalam memproses setiap perintah.
+
+Fitur Utama:
+• Downloader TikTok – Mengunduh video TikTok tanpa watermark dengan kualitas terbaik
+• HD Image Enhancer – Meningkatkan kualitas foto menjadi lebih jernih dan tajam
+• Downloader Media Sosial – Mendukung unduhan dari berbagai platform populer
+• Audio & Video Converter – Mengubah format media sesuai kebutuhan pengguna
+• Search Engine Integration – Pencarian cepat untuk gambar, video, dan informasi
+• Sticker Maker – Membuat stiker WhatsApp dari gambar atau video
+• Text Tools – Beragam fitur teks seperti stylize, fancy font, dan lainnya
+• AI Response System – Respon otomatis cerdas untuk berbagai pertanyaan
+• Utility Tools – Fitur tambahan seperti cek cuaca, waktu, dan lainnya
+
+Keunggulan:
+• Respons cepat dan stabil
+• Antarmuka sederhana dan mudah digunakan
+• Fitur lengkap dalam satu platform
+• Dukungan pembaruan berkala
+
+FURINA BOT hadir untuk memberikan pengalaman digital yang lebih praktis, modern, dan efisien langsung dari WhatsApp Anda.</p>
+<p>Owner Furina.</p>
+
+<p></p>
+
+<div style="display:flex;justify-content:center;margin-top:20px;" onclick="toggleCheck()">
+
+<div id="check" class="checkbox">✓</div>
+<span>Saya paham & siap masuk</span>
+
+</div>
+
+<button id="enterBtn" onclick="enterPortal()">TUNGGU PERSETUJUAN</button>
+
+</div>
+</div>
+
+<div id="loader">
+
+<svg class="logo" width="130" height="130" viewBox="0 0 200 200">
+<ellipse cx="100" cy="100" rx="90" ry="30" stroke="#00eaff" stroke-width="3" fill="none"/>
+<ellipse cx="100" cy="100" rx="90" ry="30" stroke="#00eaff" stroke-width="3" fill="none" transform="rotate(60 100 100)"/>
+<text x="50%" y="55%" text-anchor="middle" fill="white" font-family="Orbitron" font-size="42">FURINA</text>
+</svg>
+
+<div class="loader-text">MEMBUKA SISTEM...</div>
+
+</div>
+
+<div class="wrap" id="main">
+
+<header>
+
+<h1>BOT FURINA MD</h1>
+
+<div id="clock" class="clock">00:00:00</div>
+
+</header>
+
+<div class="grid">
+
+<div class="card"
+onclick="window.location.href='dev.html'">
+<h2>pembuat website</h2>
+<p>developer website</p>
+</div>
+
+<div class="card" onclick="goto('https://whatsapp.com/channel/0029Vb6XnjBDTkJwFUEnXM3a')">
+<h2>Saluran Resmi Furina</h2>
+<p>Ikuti update dan informasi Resmi dari Furina</p>
+</div>
+
+<div class="card" onclick="goto('https://wa.me/6288293398140?text=min+mau+sewabot')">
+<h2>OWNER</h2>
+<p>Hubungi owner jika ingin menyewa bot whatsapp.</p>
+</div>
+
+<div class="card" onclick="goto('https://tiktok.com/@for_furina')">
+<h2>TIKTOK OWNER</h2>
+<p>Ikuti Tiktok Owner</p>
+</div>
+</div>
+
+</div>
+
+<script>
+
+let approved=false
+
+function toggleCheck(){
+
+approved=!approved
+const box=document.getElementById("check")
+const btn=document.getElementById("enterBtn")
+
+if(approved){
+box.classList.add("active")
+btn.innerText="MASUK KE WEBSITE"
+}else{
+box.classList.remove("active")
+btn.innerText="TUNGGU PERSETUJUAN"
+}
+
+}
+
+function enterPortal(){
+
+if(!approved)return
+
+document.getElementById("protocol-screen").style.display="none"
+document.getElementById("loader").style.display="flex"
+
+setTimeout(()=>{
+document.getElementById("loader").style.display="none"
+document.getElementById("main").style.display="block"
+document.body.style.overflow="auto"
+},2200)
+
+}
+
+function updateClock(){
+
+const now=new Date()
+
+let h=String(now.getHours()).padStart(2,"0")
+let m=String(now.getMinutes()).padStart(2,"0")
+let s=String(now.getSeconds()).padStart(2,"0")
+
+document.getElementById("clock").innerText=`${h}:${m}:${s}`
+
+}
+
+setInterval(updateClock,1000)
+
+function goto(url){
+window.location.href=url
+}
+
+</script>
+
+</body>
+</html>
