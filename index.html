@@ -12,26 +12,25 @@
 body{
 margin:0;
 font-family:Inter,sans-serif;
-background:#05070d;
-color:white;
+background:#f4f9ff;
+color:#2c3e50;
 overflow:hidden;
 }
 
-/* star background */
+/* background soft */
 body::before{
 content:"";
 position:fixed;
 width:200%;
 height:200%;
-background:url("https://www.transparenttextures.com/patterns/stardust.png");
-animation:starsMove 80s linear infinite;
-opacity:.25;
+background:linear-gradient(120deg,#eaf4ff,#d6ecff,#f4f9ff);
+animation:moveBg 20s linear infinite;
 z-index:-1;
 }
 
-@keyframes starsMove{
+@keyframes moveBg{
 from{transform:translate(0,0)}
-to{transform:translate(-500px,-500px)}
+to{transform:translate(-200px,-200px)}
 }
 
 /* protocol */
@@ -42,31 +41,27 @@ height:100%;
 display:flex;
 align-items:center;
 justify-content:center;
-background:#05070d;
 z-index:10;
-animation:fadeIn 1s;
 }
 
 .protocol-box{
-background:#111;
+background:white;
 padding:35px;
 border-radius:12px;
 text-align:center;
 max-width:480px;
-box-shadow:0 0 25px rgba(0,255,255,.2);
-animation:zoomIn .8s ease;
+box-shadow:0 0 20px rgba(100,180,255,.2);
 }
 
 .protocol-box h2{
 font-family:Orbitron;
-margin-top:0;
-letter-spacing:2px;
+color:#5bbcff;
 }
 
 .checkbox{
 width:22px;
 height:22px;
-border:2px solid #00eaff;
+border:2px solid #5bbcff;
 display:inline-flex;
 align-items:center;
 justify-content:center;
@@ -75,15 +70,16 @@ cursor:pointer;
 }
 
 .checkbox.active{
-background:#00eaff;
-color:black;
+background:#5bbcff;
+color:white;
 }
 
 button{
 margin-top:20px;
 padding:12px 25px;
 border:none;
-background:#00eaff;
+background:#5bbcff;
+color:white;
 font-weight:bold;
 cursor:pointer;
 transition:.3s;
@@ -93,7 +89,7 @@ button:hover{
 transform:scale(1.05);
 }
 
-/* loader jadi VIDEO */
+/* loader video */
 #loader{
 position:fixed;
 width:100%;
@@ -102,7 +98,7 @@ display:none;
 align-items:center;
 justify-content:center;
 flex-direction:column;
-background:#000;
+background:black;
 z-index:9;
 }
 
@@ -119,10 +115,10 @@ z-index:-1;
 .loader-text{
 margin-top:20px;
 font-family:Orbitron;
-color:#00eaff;
+color:#5bbcff;
 letter-spacing:3px;
-animation:pulse 2s infinite;
 text-shadow:0 0 10px black;
+animation:pulse 2s infinite;
 }
 
 @keyframes pulse{
@@ -137,7 +133,6 @@ display:none;
 padding:25px;
 height:100vh;
 overflow:auto;
-animation:fadeIn 1s;
 }
 
 header{
@@ -148,15 +143,16 @@ margin-bottom:30px;
 h1{
 font-family:Orbitron;
 letter-spacing:4px;
+color:#5bbcff;
 }
 
 .clock{
 font-size:30px;
-color:#00eaff;
+color:#5bbcff;
 margin-top:10px;
 }
 
-/* cards */
+/* cards (TIDAK DIUBAH STRUKTUR) */
 .grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
@@ -164,38 +160,29 @@ gap:20px;
 }
 
 .card{
-background:#111;
+background:white;
 padding:20px;
 border-radius:12px;
 cursor:pointer;
 transition:.35s;
-position:relative;
+box-shadow:0 0 10px rgba(100,180,255,.2);
 }
 
 .card:hover{
 transform:translateY(-6px) scale(1.04);
-box-shadow:0 0 20px rgba(0,255,255,.4);
+box-shadow:0 0 20px rgba(100,180,255,.4);
 }
 
 .card h2{
 font-family:Orbitron;
 font-size:17px;
 margin:10px 0;
+color:#5bbcff;
 }
 
 .card p{
 font-size:13px;
 opacity:.7;
-}
-
-@keyframes fadeIn{
-from{opacity:0}
-to{opacity:1}
-}
-
-@keyframes zoomIn{
-from{transform:scale(.8);opacity:0}
-to{transform:scale(1);opacity:1}
 }
 
 </style>
@@ -224,7 +211,7 @@ to{transform:scale(1);opacity:1}
 <!-- LOADER VIDEO -->
 <div id="loader">
 
-<video autoplay muted loop playsinline>
+<video id="bgvid" autoplay loop playsinline>
 <source src="VID-20260320-WA0145.mp4" type="video/mp4">
 </video>
 
@@ -289,6 +276,12 @@ if(!approved)return
 
 document.getElementById("protocol-screen").style.display="none"
 document.getElementById("loader").style.display="flex"
+
+const vid = document.getElementById("bgvid")
+
+/* UNMUTE & PLAY */
+vid.muted = false
+vid.play().catch(()=>{})
 
 /* 15 DETIK */
 setTimeout(()=>{
