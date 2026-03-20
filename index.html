@@ -12,63 +12,75 @@
 body{
 margin:0;
 font-family:Inter,sans-serif;
-background:#05070d;
-color:white;
+background:#f4f9ff;
+color:#2c3e50;
 overflow:hidden;
 }
 
-/* star background */
+/* intro video */
 
-body::before{
-content:"";
-position:fixed;
-width:200%;
-height:200%;
-background:url("https://www.transparenttextures.com/patterns/stardust.png");
-animation:starsMove 80s linear infinite;
-opacity:.25;
-z-index:-1;
-}
-
-@keyframes starsMove{
-from{transform:translate(0,0)}
-to{transform:translate(-500px,-500px)}
-}
-
-/* intro */
-
-#protocol-screen{
+#intro{
 position:fixed;
 width:100%;
 height:100%;
 display:flex;
 align-items:center;
 justify-content:center;
-background:#05070d;
+flex-direction:column;
+background:white;
+z-index:20;
+}
+
+#intro video{
+position:absolute;
+width:100%;
+height:100%;
+object-fit:cover;
+z-index:-1;
+}
+
+.intro-text{
+font-family:Orbitron;
+color:#4da6ff;
+letter-spacing:3px;
+font-size:18px;
+background:rgba(255,255,255,0.7);
+padding:10px 20px;
+border-radius:10px;
+backdrop-filter:blur(6px);
+}
+
+/* protocol */
+
+#protocol-screen{
+display:none;
+position:fixed;
+width:100%;
+height:100%;
+align-items:center;
+justify-content:center;
+background:#f4f9ff;
 z-index:10;
-animation:fadeIn 1s;
 }
 
 .protocol-box{
-background:#111;
+background:#ffffff;
 padding:35px;
 border-radius:12px;
 text-align:center;
 max-width:480px;
-box-shadow:0 0 25px rgba(0,255,255,.2);
-animation:zoomIn .8s ease;
+box-shadow:0 0 20px rgba(100,180,255,.2);
 }
 
 .protocol-box h2{
 font-family:Orbitron;
-margin-top:0;
-letter-spacing:2px;
+color:#4da6ff;
 }
 
 .checkbox{
 width:22px;
 height:22px;
-border:2px solid #00eaff;
+border:2px solid #4da6ff;
 display:inline-flex;
 align-items:center;
 justify-content:center;
@@ -77,69 +89,25 @@ cursor:pointer;
 }
 
 .checkbox.active{
-background:#00eaff;
-color:black;
+background:#4da6ff;
+color:white;
 }
 
 button{
 margin-top:20px;
 padding:12px 25px;
 border:none;
-background:#00eaff;
+background:#4da6ff;
+color:white;
 font-weight:bold;
 cursor:pointer;
-transition:.3s;
 }
-
-button:hover{
-transform:scale(1.05);
-}
-
-/* loader */
-
-#loader{
-position:fixed;
-width:100%;
-height:100%;
-display:none;
-align-items:center;
-justify-content:center;
-flex-direction:column;
-background:#05070d;
-z-index:9;
-}
-
-.logo{
-animation:spin 6s linear infinite;
-}
-
-@keyframes spin{
-from{transform:rotate(0)}
-to{transform:rotate(360deg)}
-}
-
-.loader-text{
-margin-top:20px;
-font-family:Orbitron;
-color:#00eaff;
-letter-spacing:3px;
-animation:pulse 2s infinite;
-}
-
-@keyframes pulse{
-0%{opacity:.4}
-50%{opacity:1}
-100%{opacity:.4}
-}
-
-/* portal */
 
 .wrap{
 display:none;
 padding:25px;
 height:100vh;
 overflow:auto;
-animation:fadeIn 1s;
 }
 
 header{
@@ -150,11 +118,12 @@ margin-bottom:30px;
 h1{
 font-family:Orbitron;
 letter-spacing:4px;
+color:#4da6ff;
 }
 
 .clock{
-font-size:30px;
-color:#00eaff;
+font-size:28px;
+color:#4da6ff;
 margin-top:10px;
 }
 
@@ -167,23 +136,23 @@ gap:20px;
 }
 
 .card{
-background:#111;
+background:#ffffff;
 padding:20px;
 border-radius:12px;
 cursor:pointer;
-transition:.35s;
-position:relative;
+transition:.3s;
+box-shadow:0 0 10px rgba(100,180,255,.15);
 }
 
 .card:hover{
-transform:translateY(-6px) scale(1.04);
-box-shadow:0 0 20px rgba(0,255,255,.4);
+transform:translateY(-5px) scale(1.03);
+box-shadow:0 0 20px rgba(100,180,255,.4);
 }
 
 .card h2{
 font-family:Orbitron;
-font-size:17px;
-margin:10px 0;
+font-size:16px;
+color:#4da6ff;
 }
 
 .card p{
@@ -191,37 +160,29 @@ font-size:13px;
 opacity:.7;
 }
 
-@keyframes fadeIn{
-from{opacity:0}
-to{opacity:1}
-}
-
-@keyframes zoomIn{
-from{transform:scale(.8);opacity:0}
-to{transform:scale(1);opacity:1}
-}
-
 </style>
 </head>
 
 <body>
 
+<!-- INTRO VIDEO -->
+<div id="intro">
+<video autoplay muted loop>
+<source src="VID-20260320-WA0145.mp4" type="video/mp4">
+</video>
+<div class="intro-text">Membuka sistem...</div>
+</div>
+
+<!-- PROTOCOL -->
 <div id="protocol-screen">
 
 <div class="protocol-box">
-
-<h2> FURINA MD</h2>
-
-<p> FURINA BOT – WhatsApp Assistant</p>
-<p>Owner Furina.</p>
-
-<p></p>
+<h2>FURINA MD</h2>
+<p>FURINA BOT – WhatsApp Assistant</p>
 
 <div style="display:flex;justify-content:center;margin-top:20px;" onclick="toggleCheck()">
-
 <div id="check" class="checkbox">✓</div>
 <span>Saya paham & siap masuk</span>
-
 </div>
 
 <button id="enterBtn" onclick="enterPortal()">TUNGGU PERSETUJUAN</button>
@@ -229,60 +190,50 @@ to{transform:scale(1);opacity:1}
 </div>
 </div>
 
-<div id="loader">
-
-<svg class="logo" width="130" height="130" viewBox="0 0 200 200">
-<ellipse cx="100" cy="100" rx="90" ry="30" stroke="#00eaff" stroke-width="3" fill="none"/>
-<ellipse cx="100" cy="100" rx="90" ry="30" stroke="#00eaff" stroke-width="3" fill="none" transform="rotate(60 100 100)"/>
-<text x="50%" y="55%" text-anchor="middle" fill="white" font-family="Orbitron" font-size="42">FURINA</text>
-</svg>
-
-<div class="loader-text">MEMBUKA SISTEM...</div>
-
-</div>
-
+<!-- MAIN -->
 <div class="wrap" id="main">
 
 <header>
-
 <h1>BOT FURINA MD</h1>
-
 <div id="clock" class="clock">00:00:00</div>
-
 </header>
 
 <div class="grid">
 
-<div class="card"
-onclick="window.location.href='dev.html'">
-<h2>pembuat website</h2>
-<p>developer website</p>
+<div class="card" onclick="window.location.href='dev.html'">
+<h2>Developer</h2>
+<p>Pembuat website</p>
 </div>
 
 <div class="card" onclick="goto('https://whatsapp.com/channel/0029Vb6XnjBDTkJwFUEnXM3a')">
-<h2>Saluran Resmi Furina</h2>
-<p>Ikuti update dan informasi Resmi dari Furina</p>
+<h2>Saluran Resmi</h2>
+<p>Update terbaru Furina</p>
 </div>
 
 <div class="card" onclick="goto('https://wa.me/6288293398140?text=min+mau+sewabot')">
-<h2>OWNER</h2>
-<p>Hubungi owner jika ingin menyewa bot whatsapp.</p>
+<h2>Owner</h2>
+<p>Sewa bot WhatsApp</p>
 </div>
 
 <div class="card" onclick="goto('https://tiktok.com/@for_furina')">
-<h2>TIKTOK OWNER</h2>
-<p>Ikuti Tiktok Owner</p>
-</div>
+<h2>TikTok</h2>
+<p>Follow owner</p>
 </div>
 
+</div>
 </div>
 
 <script>
 
+/* intro delay */
+setTimeout(()=>{
+document.getElementById("intro").style.display="none"
+document.getElementById("protocol-screen").style.display="flex"
+},4000)
+
 let approved=false
 
 function toggleCheck(){
-
 approved=!approved
 const box=document.getElementById("check")
 const btn=document.getElementById("enterBtn")
@@ -294,34 +245,22 @@ btn.innerText="MASUK KE WEBSITE"
 box.classList.remove("active")
 btn.innerText="TUNGGU PERSETUJUAN"
 }
-
 }
 
 function enterPortal(){
-
 if(!approved)return
 
 document.getElementById("protocol-screen").style.display="none"
-document.getElementById("loader").style.display="flex"
-
-setTimeout(()=>{
-document.getElementById("loader").style.display="none"
 document.getElementById("main").style.display="block"
 document.body.style.overflow="auto"
-},2200)
-
 }
 
 function updateClock(){
-
 const now=new Date()
-
 let h=String(now.getHours()).padStart(2,"0")
 let m=String(now.getMinutes()).padStart(2,"0")
 let s=String(now.getSeconds()).padStart(2,"0")
-
 document.getElementById("clock").innerText=`${h}:${m}:${s}`
-
 }
 
 setInterval(updateClock,1000)
@@ -333,4 +272,4 @@ window.location.href=url
 </script>
 
 </body>
-  </html>
+</html>
