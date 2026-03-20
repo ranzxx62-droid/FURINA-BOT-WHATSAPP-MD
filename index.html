@@ -16,50 +16,16 @@ background:#eaf4ff;
 overflow:hidden;
 }
 
-/* INTRO VIDEO FULL */
-#intro{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:#000;
-display:flex;
-align-items:flex-end;
-justify-content:center;
-z-index:999;
-}
-
-#intro video{
-position:absolute;
-top:0;
-left:0;
-width:100%;
-height:100%;
-object-fit:cover;
-}
-
-/* TEXT BAWAH */
-.intro-text{
-position:relative;
-z-index:2;
-color:white;
-font-family:Orbitron;
-margin-bottom:40px;
-font-size:18px;
-letter-spacing:2px;
-text-shadow:0 0 10px rgba(0,0,0,0.7);
-}
-
 /* PROTOCOL */
 #protocol{
-display:none;
 position:fixed;
 width:100%;
 height:100%;
-background:#eaf4ff;
+display:flex;
 align-items:center;
 justify-content:center;
+background:#eaf4ff;
+z-index:10;
 }
 
 .box{
@@ -79,45 +45,85 @@ cursor:pointer;
 margin-top:15px;
 }
 
+/* INTRO VIDEO */
+#intro{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:#000;
+align-items:flex-end;
+justify-content:center;
+z-index:9;
+}
+
+#intro video{
+position:absolute;
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+.intro-text{
+position:relative;
+color:white;
+font-family:Orbitron;
+margin-bottom:40px;
+font-size:18px;
+letter-spacing:2px;
+text-shadow:0 0 10px rgba(0,0,0,0.7);
+}
+
+/* MAIN */
+#main{
+display:none;
+padding:20px;
+text-align:center;
+}
+
 </style>
 </head>
 
 <body>
 
-<!-- INTRO -->
-<div id="intro">
-<video id="vid" autoplay muted loop playsinline>
-<source src="./VID-20260320-WA0145.mp4" type="video/mp4">
-</video>
-
-<div class="intro-text">Membuka sistem...</div>
-</div>
-
-<!-- PROTOCOL -->
+<!-- STEP 1: PERSETUJUAN -->
 <div id="protocol">
 <div class="box">
 <h2>FURINA MD</h2>
-<button onclick="masuk()">Masuk</button>
+<p>Silakan setujui untuk masuk</p>
+<button onclick="lanjut()">MASUK</button>
 </div>
+</div>
+
+<!-- STEP 2: VIDEO INTRO -->
+<div id="intro">
+<video autoplay muted loop playsinline>
+<source src="VID-20260320-WA0145.mp4" type="video/mp4">
+</video>
+<div class="intro-text">Membuka sistem...</div>
+</div>
+
+<!-- STEP 3: MAIN -->
+<div id="main">
+<h1>BOT FURINA MD</h1>
+<p>Selamat datang di sistem</p>
 </div>
 
 <script>
 
-/* FORCE PLAY VIDEO */
-const vid = document.getElementById("vid");
+function lanjut(){
+document.getElementById("protocol").style.display="none";
+document.getElementById("intro").style.display="flex";
 
-vid.play().catch(()=>{
-console.log("autoplay diblok, biasa browser sok suci");
-});
-
-/* PINDAH HALAMAN */
+/* setelah 5 detik masuk ke main */
 setTimeout(()=>{
 document.getElementById("intro").style.display="none";
-document.getElementById("protocol").style.display="flex";
+document.getElementById("main").style.display="block";
+document.body.style.overflow="auto";
 },5000);
 
-function masuk(){
-alert("Masuk ke sistem...");
 }
 
 </script>
