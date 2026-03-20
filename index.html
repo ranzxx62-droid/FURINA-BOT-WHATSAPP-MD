@@ -3,161 +3,80 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BOT WHATSAPP FURINA MD</title>
+<title>FURINA MD</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
 
 body{
 margin:0;
-font-family:Inter,sans-serif;
-background:#f4f9ff;
-color:#2c3e50;
+font-family:Arial;
+background:#eaf4ff;
 overflow:hidden;
 }
 
-/* intro video */
-
+/* INTRO VIDEO FULL */
 #intro{
 position:fixed;
+top:0;
+left:0;
 width:100%;
 height:100%;
+background:#000;
 display:flex;
-align-items:center;
+align-items:flex-end;
 justify-content:center;
-flex-direction:column;
-background:white;
-z-index:20;
+z-index:999;
 }
 
 #intro video{
 position:absolute;
+top:0;
+left:0;
 width:100%;
 height:100%;
 object-fit:cover;
-z-index:-1;
 }
 
+/* TEXT BAWAH */
 .intro-text{
+position:relative;
+z-index:2;
+color:white;
 font-family:Orbitron;
-color:#4da6ff;
-letter-spacing:3px;
+margin-bottom:40px;
 font-size:18px;
-background:rgba(255,255,255,0.7);
-padding:10px 20px;
-border-radius:10px;
-backdrop-filter:blur(6px);
+letter-spacing:2px;
+text-shadow:0 0 10px rgba(0,0,0,0.7);
 }
 
-/* protocol */
-
-#protocol-screen{
+/* PROTOCOL */
+#protocol{
 display:none;
 position:fixed;
 width:100%;
 height:100%;
+background:#eaf4ff;
 align-items:center;
 justify-content:center;
-background:#f4f9ff;
-z-index:10;
 }
 
-.protocol-box{
-background:#ffffff;
-padding:35px;
+.box{
+background:white;
+padding:30px;
 border-radius:12px;
 text-align:center;
-max-width:480px;
-box-shadow:0 0 20px rgba(100,180,255,.2);
-}
-
-.protocol-box h2{
-font-family:Orbitron;
-color:#4da6ff;
-}
-
-.checkbox{
-width:22px;
-height:22px;
-border:2px solid #4da6ff;
-display:inline-flex;
-align-items:center;
-justify-content:center;
-margin-right:8px;
-cursor:pointer;
-}
-
-.checkbox.active{
-background:#4da6ff;
-color:white;
+box-shadow:0 0 20px rgba(0,0,0,.1);
 }
 
 button{
-margin-top:20px;
-padding:12px 25px;
+padding:10px 20px;
 border:none;
-background:#4da6ff;
+background:#6bbcff;
 color:white;
-font-weight:bold;
 cursor:pointer;
-}
-
-.wrap{
-display:none;
-padding:25px;
-height:100vh;
-overflow:auto;
-}
-
-header{
-text-align:center;
-margin-bottom:30px;
-}
-
-h1{
-font-family:Orbitron;
-letter-spacing:4px;
-color:#4da6ff;
-}
-
-.clock{
-font-size:28px;
-color:#4da6ff;
-margin-top:10px;
-}
-
-/* cards */
-
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-gap:20px;
-}
-
-.card{
-background:#ffffff;
-padding:20px;
-border-radius:12px;
-cursor:pointer;
-transition:.3s;
-box-shadow:0 0 10px rgba(100,180,255,.15);
-}
-
-.card:hover{
-transform:translateY(-5px) scale(1.03);
-box-shadow:0 0 20px rgba(100,180,255,.4);
-}
-
-.card h2{
-font-family:Orbitron;
-font-size:16px;
-color:#4da6ff;
-}
-
-.card p{
-font-size:13px;
-opacity:.7;
+margin-top:15px;
 }
 
 </style>
@@ -165,108 +84,40 @@ opacity:.7;
 
 <body>
 
-<!-- INTRO VIDEO -->
+<!-- INTRO -->
 <div id="intro">
-<video autoplay muted loop>
-<source src="VID-20260320-WA0145.mp4" type="video/mp4">
+<video id="vid" autoplay muted loop playsinline>
+<source src="./VID-20260320-WA0145.mp4" type="video/mp4">
 </video>
+
 <div class="intro-text">Membuka sistem...</div>
 </div>
 
 <!-- PROTOCOL -->
-<div id="protocol-screen">
-
-<div class="protocol-box">
+<div id="protocol">
+<div class="box">
 <h2>FURINA MD</h2>
-<p>FURINA BOT – WhatsApp Assistant</p>
-
-<div style="display:flex;justify-content:center;margin-top:20px;" onclick="toggleCheck()">
-<div id="check" class="checkbox">✓</div>
-<span>Saya paham & siap masuk</span>
-</div>
-
-<button id="enterBtn" onclick="enterPortal()">TUNGGU PERSETUJUAN</button>
-
-</div>
-</div>
-
-<!-- MAIN -->
-<div class="wrap" id="main">
-
-<header>
-<h1>BOT FURINA MD</h1>
-<div id="clock" class="clock">00:00:00</div>
-</header>
-
-<div class="grid">
-
-<div class="card" onclick="window.location.href='dev.html'">
-<h2>Developer</h2>
-<p>Pembuat website</p>
-</div>
-
-<div class="card" onclick="goto('https://whatsapp.com/channel/0029Vb6XnjBDTkJwFUEnXM3a')">
-<h2>Saluran Resmi</h2>
-<p>Update terbaru Furina</p>
-</div>
-
-<div class="card" onclick="goto('https://wa.me/6288293398140?text=min+mau+sewabot')">
-<h2>Owner</h2>
-<p>Sewa bot WhatsApp</p>
-</div>
-
-<div class="card" onclick="goto('https://tiktok.com/@for_furina')">
-<h2>TikTok</h2>
-<p>Follow owner</p>
-</div>
-
+<button onclick="masuk()">Masuk</button>
 </div>
 </div>
 
 <script>
 
-/* intro delay */
+/* FORCE PLAY VIDEO */
+const vid = document.getElementById("vid");
+
+vid.play().catch(()=>{
+console.log("autoplay diblok, biasa browser sok suci");
+});
+
+/* PINDAH HALAMAN */
 setTimeout(()=>{
-document.getElementById("intro").style.display="none"
-document.getElementById("protocol-screen").style.display="flex"
-},4000)
+document.getElementById("intro").style.display="none";
+document.getElementById("protocol").style.display="flex";
+},5000);
 
-let approved=false
-
-function toggleCheck(){
-approved=!approved
-const box=document.getElementById("check")
-const btn=document.getElementById("enterBtn")
-
-if(approved){
-box.classList.add("active")
-btn.innerText="MASUK KE WEBSITE"
-}else{
-box.classList.remove("active")
-btn.innerText="TUNGGU PERSETUJUAN"
-}
-}
-
-function enterPortal(){
-if(!approved)return
-
-document.getElementById("protocol-screen").style.display="none"
-document.getElementById("main").style.display="block"
-document.body.style.overflow="auto"
-}
-
-function updateClock(){
-const now=new Date()
-let h=String(now.getHours()).padStart(2,"0")
-let m=String(now.getMinutes()).padStart(2,"0")
-let s=String(now.getSeconds()).padStart(2,"0")
-document.getElementById("clock").innerText=`${h}:${m}:${s}`
-}
-
-setInterval(updateClock,1000)
-
-function goto(url){
-window.location.href=url
+function masuk(){
+alert("Masuk ke sistem...");
 }
 
 </script>
